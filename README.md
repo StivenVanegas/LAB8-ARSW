@@ -54,7 +54,7 @@ Para esto, realice lo siguiente:
 4. Ingrese los datos, ejecute la acción del botón, y verifique que en todas la pestañas se haya lanzado la alerta con los datos ingresados.
 
 * Se ejecuta la aplicación y se evidencia que sirve correctamente, en diferentes pestañas de incognito, con diferentes coordenadas.
-[](https://github.com/StivenVanegas/LAB8-ARSW/blob/master/img/Lab8/parte%201%2C%20item%204.png)
+![](https://github.com/StivenVanegas/LAB8-ARSW/blob/master/img/Lab8/parte%201%2C%20item%204.png)
 
 5. Haga commit de lo realizado, para demarcar el avance de la parte 2.
 
@@ -77,7 +77,7 @@ Para hacer mas útil la aplicación, en lugar de capturar las coordenadas con ca
 	```
 
 * Se realiza el callback al topico asociado y se ejecuta en varios navegadores, accediendo a la aplicación mediante la IP en donde corre el servidor.
-[](https://github.com/StivenVanegas/LAB8-ARSW/blob/master/img/Lab8/PARTE%202....png)
+![](https://github.com/StivenVanegas/LAB8-ARSW/blob/master/img/Lab8/PARTE%202....png)
 
 ## Parte III.
 
@@ -93,7 +93,7 @@ Ajuste la aplicación anterior para que pueda manejar más de un dibujo a la vez
 	```
 
 * Se agrega un campo de vista, se realiza la creacion del boton "conectase" y realiza la asociación al topico asociado. Se rectifica que los dibujos se hacen se hacen independienemente.	
-[](https://github.com/StivenVanegas/LAB8-ARSW/blob/master/img/Lab8/PARTE%203..png)
+![](https://github.com/StivenVanegas/LAB8-ARSW/blob/master/img/Lab8/PARTE%203..png)
 
 ## Parte IV.
 
