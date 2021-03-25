@@ -47,11 +47,15 @@ Para esto, realice lo siguiente:
 	
 	* Se agrega dentro del modulo de JavaScript , la función de conexión.
 	![](https://github.com/StivenVanegas/LAB8-ARSW/blob/master/img/Lab8/PUNTO%201%2C%20I2.png)
+	
+	* Se hace la conexión y se suscribe el topico, con las coordenadas establecidas en el aviso web.
+	![](https://github.com/StivenVanegas/LAB8-ARSW/blob/master/img/Lab8/PUNTO%202%2C%20I2%2C1.png)
 3. Compile y ejecute su aplicación. Abra la aplicación en varias pestañas diferentes (para evitar problemas con el caché del navegador, use el modo 'incógnito' en cada prueba).
 4. Ingrese los datos, ejecute la acción del botón, y verifique que en todas la pestañas se haya lanzado la alerta con los datos ingresados.
 
-	* Se ejecuta la aplicación y se evidencia que sirve correctamente, en diferentes pestañas de incognito, con diferentes coordenadas.
-	[](https://github.com/StivenVanegas/LAB8-ARSW/blob/master/img/Lab8/1%2C%20ITEM%204.png)
+* Se ejecuta la aplicación y se evidencia que sirve correctamente, en diferentes pestañas de incognito, con diferentes coordenadas.
+[](https://github.com/StivenVanegas/LAB8-ARSW/blob/master/img/Lab8/1%2C%20ITEM%204.png)
+
 5. Haga commit de lo realizado, para demarcar el avance de la parte 2.
 
 	```bash
@@ -72,8 +76,9 @@ Para hacer mas útil la aplicación, en lugar de capturar las coordenadas con ca
 	git commit -m "PARTE 2".
 	```
 
-	* Se realiza el callback al topico asociado y se ejecuta en varios navegadores, accediendo a la aplicación mediante la IP en donde corre el servidor.
-	[](https://github.com/StivenVanegas/LAB8-ARSW/blob/master/img/Lab8/PARTE%202.png)
+* Se realiza el callback al topico asociado y se ejecuta en varios navegadores, accediendo a la aplicación mediante la IP en donde corre el servidor.
+
+[](https://github.com/StivenVanegas/LAB8-ARSW/blob/master/img/Lab8/PARTE%202.png)
 ## Parte III.
 
 Ajuste la aplicación anterior para que pueda manejar más de un dibujo a la vez, manteniendo tópicos independientes. Para esto:
@@ -87,8 +92,9 @@ Ajuste la aplicación anterior para que pueda manejar más de un dibujo a la vez
 	git commit -m "PARTE 3".
 	```
 
-	* Se agrega un campo de vista, se realiza la creacion del boton "conectase" y realiza la asociación al topico asociado. Se rectifica que los dibujos se hacen se hacen independienemente.	
-	[](https://github.com/StivenVanegas/LAB8-ARSW/blob/master/img/Lab8/PARTE%203.png)
+* Se agrega un campo de vista, se realiza la creacion del boton "conectase" y realiza la asociación al topico asociado. Se rectifica que los dibujos se hacen se hacen independienemente.	
+
+[](https://github.com/StivenVanegas/LAB8-ARSW/blob/master/img/Lab8/PARTE%203.png)
 
 ## Parte IV.
 
