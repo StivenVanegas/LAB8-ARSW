@@ -1,5 +1,8 @@
 var app = (function () {
 
+    var valX;
+    var valY;
+
     class Point{
         constructor(x,y){
             this.x=x;
@@ -15,8 +18,17 @@ var app = (function () {
         ctx.beginPath();
         ctx.arc(point.x, point.y, 3, 0, 2 * Math.PI);
         ctx.stroke();
-        stompClient.send("/topic/newpoint", {}, JSON.stringify(point));
+        stompClient.send("/topic/newpoint", {}, JSON.stringify({x:valX,y:valY}));
     };
+
+    var addPointToCanvas2 = function (point) {
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(point.x, point.y, 3, 0, 2 * Math.PI);
+            ctx.stroke();
+
+        };
     
     
     var getMousePosition = function (evt) {
@@ -39,30 +51,65 @@ var app = (function () {
             console.log('Connected: ' + frame);
             stompClient.subscribe('/topic/newpoint', function (eventbody) {
             var punto = JSON.parse(eventbody.body);
-            alert("x: "+punto.x+"y: "+punto.y);
+            addPointToCanvas2(punto);
             });
         });
 
     };
     
-    
+    var canvasInit = function(){
+    		var canvas = document.getElementById("canvas");
+    		var offset = getOffset(canvas);
+    		canvas.addEventListener("pointerdown", pointerHandler, false);
+
+    	};
+
+    	var pointerHandler = function(event,offset){
+    		var canvas = document.getElementById("canvas");
+    		var offset = getOffset(canvas);
+    		valX = event.pageX-offset.left
+    		valY = event.pageY-offset.top
+    		console.log(valX);
+    		console.log(valY);
+    		publishPoint(valX,valY);
+    	};
+
+    	var getOffset = function(obj) {
+              var offsetLeft = 0;
+              var offsetTop = 0;
+              do {
+                if (!isNaN(obj.offsetLeft)) {
+                    offsetLeft += obj.offsetLeft;
+                }
+                if (!isNaN(obj.offsetTop)) {
+                    offsetTop += obj.offsetTop;
+                }
+              } while(obj = obj.offsetParent );
+              return {left: offsetLeft, top: offsetTop};
+        };
+
+        var publishPoint= function(px,py){
+
+                    var pt=new Point(px,py);
+                    console.info("publishing point at "+pt);
+                    addPointToCanvas(pt);
+
+
+                    //publicar el evento
+                };
 
     return {
+
 
         init: function () {
             var can = document.getElementById("canvas");
             
             //websocket connection
             connectAndSubscribe();
+            canvasInit();
         },
 
-        publishPoint: function(px,py){
-            var pt=new Point(px,py);
-            console.info("publishing point at "+pt);
-            addPointToCanvas(pt);
 
-            //publicar el evento
-        },
 
         disconnect: function () {
             if (stompClient !== null) {
