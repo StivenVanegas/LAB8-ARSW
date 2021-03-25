@@ -18,7 +18,8 @@ var app = (function () {
         ctx.beginPath();
         ctx.arc(point.x, point.y, 3, 0, 2 * Math.PI);
         ctx.stroke();
-        stompClient.send("/topic/newpoint", {}, JSON.stringify({x:valX,y:valY}));
+        var topico = document.getElementById("topico").value;
+        stompClient.send("/topic/newpoint."+ topico, {}, JSON.stringify({x:valX,y:valY}));
     };
 
     var addPointToCanvas2 = function (point) {
@@ -49,7 +50,8 @@ var app = (function () {
         //subscribe to /topic/TOPICXX when connections succeed
         stompClient.connect({}, function (frame) {
             console.log('Connected: ' + frame);
-            stompClient.subscribe('/topic/newpoint', function (eventbody) {
+            var topico = document.getElementById("topico").value;
+            stompClient.subscribe('/topic/newpoint.'+topico, function (eventbody) {
             var punto = JSON.parse(eventbody.body);
             addPointToCanvas2(punto);
             });
