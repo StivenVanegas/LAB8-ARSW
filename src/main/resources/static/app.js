@@ -19,7 +19,7 @@ var app = (function () {
         ctx.arc(point.x, point.y, 3, 0, 2 * Math.PI);
         ctx.stroke();
         var topico = document.getElementById("topico").value;
-        stompClient.send("/topic/newpoint."+ topico, {}, JSON.stringify({x:valX,y:valY}));
+        stompClient.send("/app/newpoint."+ topico, {}, JSON.stringify({x:valX,y:valY}));
     };
 
     var addPointToCanvas2 = function (point) {
@@ -31,7 +31,23 @@ var app = (function () {
 
         };
     
-    
+    var addPoligonToCanvas = function (point){
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            ctx.beginPath();
+
+           for (var i in point){
+                if (i === 0){
+                    ctx.moveTo(point[i].x,point[i].y);
+                }
+
+                else {
+                    ctx.lineTo(point[i].x,point[i].y);
+                }
+           }
+           ctx.closePath();
+           ctx.fill();
+    }
     var getMousePosition = function (evt) {
         canvas = document.getElementById("canvas");
         var rect = canvas.getBoundingClientRect();
@@ -54,9 +70,13 @@ var app = (function () {
             stompClient.subscribe('/topic/newpoint.'+topico, function (eventbody) {
             var punto = JSON.parse(eventbody.body);
             addPointToCanvas2(punto);
-            });
-        });
 
+            });
+            stompClient.subscribe('/topic/newpoligon.'+topico, function (eventbody) {
+                                var puntos = JSON.parse(eventbody.body);
+                                addPoligonToCanvas(puntos);
+                                });
+        });
     };
     
     var canvasInit = function(){
